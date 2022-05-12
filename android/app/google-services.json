@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1015803770585",
+    "project_id": "meliorabags",
+    "storage_bucket": "meliorabags.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015803770585:android:ec615e63e4d5422e7870c8",
+        "android_client_info": {
+          "package_name": "com.example.meliorabag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015803770585-44r2rs2nhlr49k7gn37q4mgkhjfed74d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuL31emEIRYSi34PhwQXsN8voaWXyJkjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015803770585-44r2rs2nhlr49k7gn37q4mgkhjfed74d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
