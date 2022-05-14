@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Meliora Store',
       theme: ThemeData(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme:
             Theme.of(context).textTheme.apply(bodyColor: AppColors.white),

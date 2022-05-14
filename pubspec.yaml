@@ -44,6 +44,9 @@ dependencies:
   firebase_auth: ^3.3.12
   firebase_storage:
   firebase_core_web: ^1.6.3
+  http: ^0.13.4
+  url_launcher: ^6.1.2
+  mailer: ^5.1.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

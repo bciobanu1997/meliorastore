@@ -5,7 +5,7 @@ final Map<String, String> enUs = {
   'securePayments': 'Secure payments',
   'unitedKingdom': 'United Kingdom (GBP)',
   'shop': 'Shop',
-  'commingSoon': 'Comminng Soon',
+  'commingSoon': 'Coming Soon',
   'about': 'About',
   'faq': 'FAQ',
   'brexit': 'Brexit',
@@ -15,5 +15,12 @@ final Map<String, String> enUs = {
   'fullName': 'Insert your full name',
   'subscriberHintEmail': 'Insert your email',
   'subscriberEmail': 'Insert your email',
-  'submit': 'Submit',
+  'submit': 'Notify Me',
+  'hey': 'Hey!',
+  'weComingSoon': 'We are coming soon...',
+  'madeinuk': 'Made in the UK',
+  'privacy': 'Privacy Policy',
+  'homemade': 'Homemade',
+  'subscribeMessage':
+      'We are just a few weeks from our big launch. Subscribe to be notified about our products!',
 };
