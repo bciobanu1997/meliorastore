@@ -36,14 +36,14 @@ class _MyAppState extends State<MyApp> {
       translations: TranslationService(),
       locale: const Locale('en', 'US'),
       fallbackLocale: const Locale('en', 'US'),
-      color: AppColors.seashell,
+      color: AppColors.lavender,
       debugShowCheckedModeBanner: false,
       title: 'Meliora Store',
       theme: ThemeData(
-        backgroundColor: AppColors.seashell,
+        backgroundColor: AppColors.lavender,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme:
-            Theme.of(context).textTheme.apply(bodyColor: AppColors.seashell),
+            Theme.of(context).textTheme.apply(bodyColor: AppColors.lavender),
       ),
       initialRoute: '/',
       onGenerateRoute: Flurorouter.router.generator, //const MainScreen(),

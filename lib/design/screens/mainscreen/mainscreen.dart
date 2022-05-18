@@ -24,72 +24,77 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    return Scaffold(
-        key: drawerKey,
+    return //Scaffold(
+        //key: drawerKey,
         //drawer: const AppBarNavDrawer(),
         //appBar: MainAppBar(),
         //backgroundColor: AppColors.mistyrose,
-        body: Container(
+        Container(
             height: screenSize.height,
             width: screenSize.width,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(PngImages.cover),
+                image: AssetImage(PngImages.background),
                 fit: BoxFit.cover,
               ),
             ),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: [
-                  SizedBox(height: screenSize.height / 25),
-                  Text('meliorastore'.tr,
-                      style: GoogleFonts.cinzel(
-                          color: AppColors.black,
-                          fontSize: screenSize.height / 20,
-                          fontWeight: FontWeight.w400)),
-                  SizedBox(height: screenSize.height / 20),
-                  const SubscribeTopScreen(),
-                  //MainScreenTop(),
-                  SubscribeScreen(),
-                  (screenSize.width > 720)
-                      ? SizedBox(height: screenSize.height / 3)
-                      : SizedBox(height: screenSize.height / 28),
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              body: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: [
+                    //MainScreenTop(),
+                    SizedBox(height: screenSize.height / 25),
+                    Text('meliorastore'.tr,
+                        style: GoogleFonts.cinzel(
+                            color: AppColors.black,
+                            fontSize: screenSize.height / 20,
+                            fontWeight: FontWeight.w400)),
+                    SizedBox(height: screenSize.height / 20),
+                    const SubscribeTopScreen(),
+                    SizedBox(height: screenSize.height / 20),
+                    SubscribeScreen(),
+                    (screenSize.width > 800)
+                        ? SizedBox(height: screenSize.height / 6)
+                        : const SizedBox(height: 0),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SizedBox(
-                          height: screenSize.height / 5,
-                          width: screenSize.height / 5,
-                          child: IconButton(
-                            padding: const EdgeInsets.all(0.0),
-                            icon: SvgPicture.asset(
-                              SvgImages.instagram,
-                            ),
-                            onPressed: () {
-                              js.context.callMethod('open', [
-                                'https://www.instagram.com/meliorastoreco/'
-                              ]);
-                            },
-                          )),
-                      SizedBox(
-                          height: screenSize.height / 4,
-                          width: screenSize.height / 4,
-                          child: IconButton(
-                            padding: const EdgeInsets.all(0.0),
-                            icon: SvgPicture.asset(
-                              SvgImages.facebook,
-                            ),
-                            onPressed: () {
-                              js.context.callMethod('open',
-                                  ['https://www.facebook.com/MelioraStoreCo']);
-                            },
-                          )),
-                    ],
-                  )
-                ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                            height: screenSize.height / 5,
+                            width: screenSize.height / 5,
+                            child: IconButton(
+                              padding: const EdgeInsets.all(0.0),
+                              icon: SvgPicture.asset(
+                                SvgImages.instagram,
+                              ),
+                              onPressed: () {
+                                js.context.callMethod('open', [
+                                  'https://www.instagram.com/meliorastoreco/'
+                                ]);
+                              },
+                            )),
+                        SizedBox(
+                            height: screenSize.height / 4,
+                            width: screenSize.height / 4,
+                            child: IconButton(
+                              padding: const EdgeInsets.all(0.0),
+                              icon: SvgPicture.asset(
+                                SvgImages.facebook,
+                              ),
+                              onPressed: () {
+                                js.context.callMethod('open', [
+                                  'https://www.facebook.com/MelioraStoreCo'
+                                ]);
+                              },
+                            )),
+                      ],
+                    )
+                  ],
+                ),
               ),
-            )));
+            ));
   }
 }
