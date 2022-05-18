@@ -96,11 +96,11 @@ class BottomAppRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(width: 20),
-            ShopButton(),
-            CommingSoonButton(),
-            AboutButton(),
-            FaqButton(),
-            BrexitButton(),
+            const ShopButton(),
+            const CommingSoonButton(),
+            const AboutButton(),
+            const FaqButton(),
+            const BrexitButton(),
             Expanded(
                 child: MainNameButtonWidget(
               fontwidth: screenSize.width / 40,

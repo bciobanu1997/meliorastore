@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:meliorabag/design/screens/test/testController.dart';
 import 'package:meliorabag/design/utils/colors.dart';
 import 'package:meliorabag/design/utils/constant.dart';
 import 'package:meliorabag/firebase_db/firebaseDatabase.dart';
@@ -12,7 +14,7 @@ class SubscribeScreen extends StatelessWidget {
   SubscribeScreen({Key? key}) : super(key: key);
   final fieldTextName = TextEditingController();
   final fieldTextEmail = TextEditingController();
-
+  SubscriberController controller = SubscriberController();
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -30,73 +32,94 @@ class SubscribeScreen extends StatelessWidget {
         SizedBox(
           width: screenSize.height / 3,
           child: TextField(
+            textInputAction: TextInputAction.next,
             controller: fieldTextEmail,
-            style: TextStyle(color: AppColors.black),
+            style: GoogleFonts.roboto(
+                color: AppColors.black,
+                fontSize: Constant.small,
+                fontWeight: FontWeight.w400),
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               labelText: 'Email',
-              labelStyle: TextStyle(
-                color: AppColors.shuttleGrey,
+              labelStyle: const TextStyle(
+                color: AppColors.black,
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: new BorderRadius.circular(40),
+                borderRadius: BorderRadius.circular(10),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: new BorderRadius.circular(40),
-                borderSide: BorderSide(color: Color(0xFFCECCCC)),
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(color: Color(0xFFCECCCC)),
               ),
               isDense: true,
               contentPadding:
-                  EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         SizedBox(
           width: screenSize.height / 3,
           child: TextField(
+            textInputAction: TextInputAction.done,
+            onEditingComplete: () {},
             controller: fieldTextName,
-            style: TextStyle(color: AppColors.black),
+            style: GoogleFonts.roboto(
+                color: AppColors.black,
+                fontSize: Constant.small,
+                fontWeight: FontWeight.w400),
             keyboardAppearance: Brightness.dark,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.name,
             decoration: InputDecoration(
               labelText: 'Full Name',
-              labelStyle: TextStyle(
-                color: AppColors.shuttleGrey,
+              labelStyle: const TextStyle(
+                color: AppColors.black,
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: new BorderRadius.circular(40),
+                borderRadius: BorderRadius.circular(10),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: new BorderRadius.circular(40),
-                borderSide: BorderSide(color: Color(0xFFCECCCC)),
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(color: Color(0xFFCECCCC)),
               ),
               isDense: true,
               contentPadding:
-                  EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         SizedBox(
           height: 40,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: AppColors.blazeOrange,
+                primary: AppColors.dust,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30), // <-- Radius
+                  borderRadius: BorderRadius.circular(10), // <-- Radius
                 ),
               ),
               onPressed: () {
                 //Register subscriber
                 subscriberCheck();
               },
-              child: Text('submit'.tr,
+              child: Text('subscribe'.tr,
                   style: GoogleFonts.roboto(
-                      color: AppColors.white,
+                      color: AppColors.black,
                       fontSize: Constant.small,
-                      fontWeight: FontWeight.w600))),
+                      fontWeight: FontWeight.w400))),
         ),
+        Obx(() => (controller.subscriberCheck.value == true)
+            ? const SubscribedSuccess()
+            : const Text(
+                '',
+                style: TextStyle(color: AppColors.black),
+              )),
+        Obx(() => (controller.subscriberError.value == true)
+            ? const SubscribedUnsuccess()
+            : const Text(
+                '',
+                style: TextStyle(color: AppColors.black),
+              )),
       ],
     );
   }
@@ -104,82 +127,106 @@ class SubscribeScreen extends StatelessWidget {
   Column _rowSubscriberForm(Size screenSize) {
     return Column(
       children: [
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
               width: screenSize.height / 3,
               child: TextField(
+                textInputAction: TextInputAction.next,
                 controller: fieldTextEmail,
-                style: TextStyle(color: AppColors.black),
+                style: GoogleFonts.roboto(
+                    color: AppColors.black,
+                    fontSize: Constant.small,
+                    fontWeight: FontWeight.w400),
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  labelStyle: TextStyle(
-                    color: AppColors.shuttleGrey,
+                  labelStyle: const TextStyle(
+                    color: AppColors.black,
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(40),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(40),
-                    borderSide: BorderSide(color: Color(0xFFCECCCC)),
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Color(0xFFCECCCC)),
                   ),
                   isDense: true,
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 ),
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             SizedBox(
               width: screenSize.height / 4,
               child: TextField(
+                textInputAction: TextInputAction.done,
+                onEditingComplete: () {
+                  //this is called only when done or ok is button is tapped in keyboard
+                },
                 controller: fieldTextName,
-                style: TextStyle(color: AppColors.black),
+                style: GoogleFonts.roboto(
+                    color: AppColors.black,
+                    fontSize: Constant.small,
+                    fontWeight: FontWeight.w400),
                 keyboardAppearance: Brightness.dark,
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.name,
                 decoration: InputDecoration(
                   labelText: 'Full Name',
-                  labelStyle: TextStyle(
-                    color: AppColors.shuttleGrey,
+                  labelStyle: const TextStyle(
+                    color: AppColors.black,
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(40),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(40),
-                    borderSide: BorderSide(color: Color(0xFFCECCCC)),
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Color(0xFFCECCCC)),
                   ),
                   isDense: true,
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 ),
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             SizedBox(
               height: 40,
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: AppColors.blazeOrange,
+                    primary: AppColors.dust,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30), // <-- Radius
+                      borderRadius: BorderRadius.circular(10), // <-- Radius
                     ),
                   ),
                   onPressed: () {
                     //Register subscriber
                     subscriberCheck();
                   },
-                  child: Text('submit'.tr,
+                  child: Text('subscribe'.tr,
                       style: GoogleFonts.roboto(
-                          color: AppColors.white,
+                          color: AppColors.black,
                           fontSize: Constant.small,
-                          fontWeight: FontWeight.w600))),
-            )
+                          fontWeight: FontWeight.w400))),
+            ),
           ],
         ),
+        const SizedBox(height: 20),
+        Obx(() => (controller.subscriberCheck.value == true)
+            ? const SubscribedSuccess()
+            : const Text(
+                '',
+                style: TextStyle(color: AppColors.black),
+              )),
+        Obx(() => (controller.subscriberError.value == true)
+            ? const SubscribedUnsuccess()
+            : const Text(
+                '',
+                style: TextStyle(color: AppColors.black),
+              )),
       ],
     );
   }
@@ -203,7 +250,7 @@ class SubscribeScreen extends StatelessWidget {
     return response.statusCode;
   }
 
-  void subscriberCheck() {
+  Future<void> subscriberCheck() async {
     if (fieldTextName.text.isNotEmpty &&
         fieldTextName.text.length >= 6 &&
         fieldTextEmail.text.isNotEmpty &&
@@ -213,11 +260,15 @@ class SubscribeScreen extends StatelessWidget {
           .then((value) => sendEmail())
           .then((value) => fieldTextEmail.clear())
           .then((value) => fieldTextName.clear())
-          //.then((value) => subscribeUserError())
-          .catchError((onError) => print('Failed to submit: $onError'));
-    } else
-      //subscribeUserSuccess();
-      print('');
+          .then((value) => controller.subscriberCheck.value = true)
+          .then((value) => print(controller.subscriberCheck.value))
+          .catchError((onError) => controller.subscriberError.value = true);
+    } else {
+      controller.subscriberError.value = true;
+      await Future.delayed(const Duration(seconds: 5), () {
+        controller.subscriberError.value = false;
+      });
+    }
   }
 
   /*void subscribeUserError() {
@@ -233,4 +284,36 @@ class SubscribeScreen extends StatelessWidget {
         duration: const Duration(milliseconds: 1200),
         backgroundColor: Colors.white);
   }*/
+}
+
+class SubscribedSuccess extends StatelessWidget {
+  const SubscribedSuccess({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    return Text('subscribedSuccess'.tr,
+        style: GoogleFonts.cinzel(
+            color: AppColors.black,
+            fontSize: screenSize.height / 50,
+            fontWeight: FontWeight.w300));
+  }
+}
+
+class SubscribedUnsuccess extends StatelessWidget {
+  const SubscribedUnsuccess({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    return Text('subscribedUnsuccessful'.tr,
+        style: GoogleFonts.cinzel(
+            color: AppColors.black,
+            fontSize: screenSize.height / 50,
+            fontWeight: FontWeight.w300));
+  }
 }

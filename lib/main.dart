@@ -12,11 +12,11 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -36,14 +36,14 @@ class _MyAppState extends State<MyApp> {
       translations: TranslationService(),
       locale: const Locale('en', 'US'),
       fallbackLocale: const Locale('en', 'US'),
-      color: Colors.white,
+      color: AppColors.seashell,
       debugShowCheckedModeBanner: false,
       title: 'Meliora Store',
       theme: ThemeData(
-        backgroundColor: AppColors.white,
+        backgroundColor: AppColors.seashell,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme:
-            Theme.of(context).textTheme.apply(bodyColor: AppColors.white),
+            Theme.of(context).textTheme.apply(bodyColor: AppColors.seashell),
       ),
       initialRoute: '/',
       onGenerateRoute: Flurorouter.router.generator, //const MainScreen(),

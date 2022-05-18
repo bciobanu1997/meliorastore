@@ -11,7 +11,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    return (screenSize.width > 800) ? AppBarMoreThan900() : AppBarLessThan900();
+    return (screenSize.width > 800) ? const AppBarMoreThan900() : const AppBarLessThan900();
   }
 
   @override

@@ -46,7 +46,7 @@ class AppBarLessThan900 extends StatelessWidget {
             )),
             Expanded(
               child: ConstrainedBox(
-                constraints: new BoxConstraints(maxHeight: 60),
+                constraints: const BoxConstraints(maxHeight: 60),
                 child: Container(
                   color: AppColors.white,
                   child: Row(

@@ -9,10 +9,10 @@ class Flurorouter {
 
   static final Handler _homeScreen = Handler(
       handlerFunc: (BuildContext? context, Map<String, dynamic> params) =>
-          MainScreen());
+          const MainScreen());
   static final Handler _commingSoonHandler = Handler(
       handlerFunc: (BuildContext? context, Map<String, dynamic> params) =>
-          TestScreen());
+          const TestScreen());
 
   static final Handler _navBarDrawer = Handler(
       handlerFunc: (BuildContext? context, Map<String, dynamic> params) =>

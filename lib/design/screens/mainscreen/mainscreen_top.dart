@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,7 +5,7 @@ import 'package:meliorabag/design/utils/colors.dart';
 import 'package:meliorabag/design/widgets/networkImageUrl.dart';
 
 class MainScreenTop extends StatelessWidget {
-  MainScreenTop({Key? key}) : super(key: key);
+  const MainScreenTop({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;

@@ -15,12 +15,17 @@ final Map<String, String> enUs = {
   'fullName': 'Insert your full name',
   'subscriberHintEmail': 'Insert your email',
   'subscriberEmail': 'Insert your email',
-  'submit': 'Notify Me',
+  'subscribe': 'Subscribe',
   'hey': 'Hey!',
   'weComingSoon': 'We are coming soon...',
-  'madeinuk': 'Made in the UK',
+  'madeinuk': 'Made in London',
   'privacy': 'Privacy Policy',
-  'homemade': 'Homemade',
+  'handmade': 'Handmade',
   'subscribeMessage':
       'We are just a few weeks from our big launch. Subscribe to be notified about our products!',
+  'meet':
+      'We can meet together on social media. Tap and ask us about our products.',
+  'subscribedSuccess':
+      'Thank you, your subscription was submitted. Check your email.',
+  'subscribedUnsuccessful': 'Sorry something wrong, try again.',
 };
