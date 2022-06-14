@@ -29,6 +29,13 @@
             {
               "client_id": "1015803770585-44r2rs2nhlr49k7gn37q4mgkhjfed74d.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1015803770585-ih7iopcblli0cs60kcldditpok44arhu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.meliorabag"
+              }
             }
           ]
         }

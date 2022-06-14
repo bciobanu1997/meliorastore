@@ -4,17 +4,18 @@ import 'package:get/get.dart';
 import 'constant.dart';
 
 class AppTextStyle extends StatelessWidget {
-  const AppTextStyle({
-    Key? key,
-    required this.text,
-    this.fontSize,
-    this.maxLines,
-    this.color,
-    this.fontWeight,
-    this.alignment,
-    this.bold = false,
-    this.label = false,
-  }) : super(key: key);
+  const AppTextStyle(
+      {Key? key,
+      required this.text,
+      this.fontSize,
+      this.maxLines,
+      this.color,
+      this.fontWeight,
+      this.alignment,
+      this.bold = false,
+      this.label = false,
+      this.fontfamily})
+      : super(key: key);
   final String text;
   final bool? bold;
   final double? fontSize;
@@ -23,7 +24,7 @@ class AppTextStyle extends StatelessWidget {
   final Color? color;
   final FontWeight? fontWeight;
   final AlignmentGeometry? alignment;
-
+  final String? fontfamily;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -31,6 +32,7 @@ class AppTextStyle extends StatelessWidget {
       child: Text(
         text.tr,
         style: TextStyle(
+            fontFamily: (fontfamily == null) ? 'Montserrat' : fontfamily,
             fontSize: (label == true)
                 ? Constant.big
                 : (fontSize == null)

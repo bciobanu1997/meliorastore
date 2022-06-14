@@ -17,4 +17,5 @@ class AppColors {
   static const Color seashell = Color(0xFFEFF1F2);
   static const Color timberWolf = Color(0x15DBD6D0);
   static const Color lavender = Color(0xFFeeeeee);
+  static const Color mercury = Color(0xFFECE3E9);
 }

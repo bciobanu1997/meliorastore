@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
-class AppBarController extends GetxController {
-  RxDouble width = Get.width.obs;
+class SubscriberController extends GetxController {
+  RxBool subscriberCheck = false.obs;
+  RxBool subscriberError = false.obs;
 }

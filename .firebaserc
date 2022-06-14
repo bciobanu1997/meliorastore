@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "meliorabags"
-  }
+    "default": "meliorabags",
+    " ": "meliorabags"
+  },
+  "targets": {}
 }
